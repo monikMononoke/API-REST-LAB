@@ -1,5 +1,18 @@
 import { createTheme, Theme } from '@mui/material/styles';
 
-const defaultTheme = createTheme();
-
-export const theme: Theme = defaultTheme;
+export const theme: Theme = createTheme({
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          color: 'white',
+          fontFamily: "'Roboto', sans-serif",
+        },
+        'a:visited': {
+          color: 'white',
+          textDecoration: 'none',
+        },
+      },
+    },
+  },
+});

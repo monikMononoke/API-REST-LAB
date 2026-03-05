@@ -20,7 +20,7 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
   const isAlive = (status: string): boolean => status === 'Alive';
 
   return (
-    <Card style={{ backgroundColor: '#333' }}>
+    <Card style={{ backgroundColor: '#282c34' }}>
       <CardHeader
         avatar={<Avatar aria-label="character">{character.name[0]}</Avatar>}
       />
