@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import * as api from './api';
 import { Character, createEmptyCharacter } from './character.vm';
 import { CharacterComponent } from './character.component';
+import { mapCharacterFromApiToVm } from './character.mappers';
 
 export const CharacterContainer: React.FunctionComponent = (props) => {
   const [character, setCharacter] = React.useState<Character>(
@@ -11,7 +12,9 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
   const { id } = useParams<{ id: string }>();
 
   const loadCharacter = async () => {
-    await api.getCharacter(id).then((result) => setCharacter(result));
+    await api
+      .getCharacter(id)
+      .then((result) => setCharacter(mapCharacterFromApiToVm(result)));
   };
 
   React.useEffect(() => {
