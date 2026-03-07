@@ -10,22 +10,23 @@ interface Props {
 export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
   const { character } = props;
   return (
-    <div className={classes.root}>
-      <div className={classes.container}>
+    <div className={classes.container}>
+      <div className={classes.card}>
         <div>
-          <div>
-            <h2>{character.name}</h2>
-          </div>
-          <div>
-            {character.image ? (
-              <img
-                className={classes.image}
-                src={character.image}
-                alt={character.name}
-              />
-            ) : null}
-          </div>
+          <h2>{character.name}</h2>
         </div>
+        <div>
+          {character.image ? (
+            <img
+              className={classes.image}
+              src={character.image}
+              alt={character.name}
+            />
+          ) : null}
+        </div>
+      </div>
+
+      <div className={classes.container}>
         <div>
           <p>Status: {character.status}</p>
           <p>Species: {character.species}</p>

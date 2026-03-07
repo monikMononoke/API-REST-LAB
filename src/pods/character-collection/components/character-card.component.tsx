@@ -10,6 +10,7 @@ import { CharacterEntityVm } from '../character-collection.vm';
 import * as classes from './character-card.styles';
 import { linkRoutes } from '#core/router/routes';
 import { Link } from 'react-router';
+import { StatusIndicator } from '#common/components';
 
 interface Props {
   character: CharacterEntityVm;
@@ -24,44 +25,18 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
       <CardHeader
         avatar={<Avatar aria-label="character">{character.name[0]}</Avatar>}
       />
-      <CardContent>
-        <div className={classes.content}>
-          <Link to={linkRoutes.character(character.id)}>
+      <Link to={linkRoutes.character(character.id)}>
+        <CardContent>
+          <div className={classes.content}>
             <CardMedia
               image={character.image}
               title={character.name}
               style={{ height: 0, paddingTop: '56.25%' }}
             />
-          </Link>
-          <div
-            style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}
-          >
-            {isAlive(character.status) ? (
-              <span>
-                <div
-                  style={{
-                    backgroundColor: 'green',
-                    height: '20px',
-                    width: '20px',
-                    borderRadius: '50%',
-                    display: 'inline-block',
-                  }}
-                ></div>
-              </span>
-            ) : (
-              <div
-                style={{
-                  backgroundColor: 'red',
-                  height: '20px',
-                  width: '20px',
-                  borderRadius: '50%',
-                  display: 'inline-block',
-                }}
-              ></div>
-            )}
+            <StatusIndicator status={character.status} />
           </div>
-        </div>
-      </CardContent>
+        </CardContent>
+      </Link>
     </Card>
   );
 };
